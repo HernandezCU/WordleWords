@@ -23,10 +23,10 @@ entry.focus_set()
 entry.pack()
 
 #Create a Button to validate Entry Widget
-ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=5)
-ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=5)
-ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=5)
-ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=5)
-ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=5)
+ttk.Button(win, text="Contains", width=20, command=display_text).pack(pady=5)
+ttk.Button(win, text="Contains at Index", width=20, command=display_text).pack(pady=5)
+ttk.Button(win, text="Doesn't Contain", width=20, command=display_text).pack(pady=5)
+ttk.Button(win, text="Doesn't Contains at index", width=20, command=display_text).pack(pady=5)
+ttk.Button(win, text="Remove Word", width=20, command=display_text).pack(pady=5)
 
 win.mainloop()
