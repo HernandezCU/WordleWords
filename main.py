@@ -1,11 +1,8 @@
+import tkinter
 a_file = open("words.txt")
 file_contents = a_file.read()
 words = file_contents.splitlines()
-
-
-def find_word(word: str, list_of_words: list):
-    if word.lower() in list_of_words:
-        return True
+global updated_words
 
 
 def contains(letters: str, list_of_words: list):
@@ -31,20 +28,33 @@ def contains_at_index(letter: str, index: int, list_of_words: list):
     return matches
 
 
-def not_contains(letters: str, list_of_words: list):
+def not_contains(letter: str, list_of_words: list):
+    x = []
     for word in list_of_words:
-        if word.contains()
+        if letter not in word:
+            x.append(word)
+        else:
+            pass
+
+    return x
+
+
+def not_contains_at_index(letter: str, index: int, list_of_words: list):
+    x = []
+    for word in list_of_words:
+        if word[index] != letter:
+            x.append(word)
+        else:
+            pass
+
+    return x
+
+
+def remove_word(word, list_of_words):
+    list_of_words.remove(word)
+    return list_of_words
 
 
 if __name__ == "__main__":
-    #print(not_contains("ant", words))
-    x = contains_at_index("r", 1, words)
-    y = contains_at_index("n", 3, x)
-    z = contains_at_index("e", 4, y)
-    print(z)
+    pass
 
-    #print(contains("eav", words))
-    #print(find("learn", words))
-
-
-#    matches = [x for x in list_of_words if x not in matches]

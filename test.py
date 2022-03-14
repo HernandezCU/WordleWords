@@ -1,19 +1,32 @@
-a_file = open("words.txt")
-file_contents = a_file.read()
-words = file_contents.splitlines()
+#Import the required Libraries
+from tkinter import *
+from tkinter import ttk
 
+#Create an instance of Tkinter frame
+win= Tk()
 
-def notin(c, list_of_words):
-    x = []
-    for word in list_of_words:
-        if c not in word:
-            x.append(x)
+#Set the geometry of Tkinter frame
+win.geometry("750x500")
 
-    return x
+def display_text():
+   global entry
+   string= entry.get()
+   label.configure(text=string)
 
+#Initialize a Label to display the User Input
+label=Label(win, text="", font=("Courier 22 bold"))
+label.pack()
 
-if __name__ == "__main__":
-    global p
-    while True:
-        char = input("Enter Letter: \n").split()
-        p = notin(char, words)
+#Create an Entry widget to accept User Input
+entry= Entry(win, width= 40)
+entry.focus_set()
+entry.pack()
+
+#Create a Button to validate Entry Widget
+ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=5)
+ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=5)
+ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=5)
+ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=5)
+ttk.Button(win, text= "Okay",width= 20, command= display_text).pack(pady=5)
+
+win.mainloop()
