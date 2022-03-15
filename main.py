@@ -1,5 +1,6 @@
 #Import the required Libraries
 from tkinter import *
+from tkinter.scrolledtext import ScrolledText
 from tkinter import ttk
 from wordle_solver import *
 
@@ -8,6 +9,21 @@ a_file = open("words.txt")
 file_contents = a_file.read()
 
 words = file_contents.splitlines()
+
+
+def suggestions():
+    count = {'a': 979, 'b': 281, 'c': 477, 'd': 393, 'e': 1233, 'f': 230, 'g': 311, 'h': 389, 'i': 671, 'j': 27,
+             'k': 210, 'l': 719, 'm': 316, 'n': 575, 'o': 754, 'p': 367, 'q': 29, 'r': 899, 's': 669, 't': 729,
+             'u': 467, 'v': 153,'w': 195, 'x': 37, 'y': 425, 'z': 40}
+
+    max = {'e': 1233, 'a': 979, 'r': 899, 'o': 754, 't': 729}
+
+    min = {'j': 27, 'q': 29, 'x': 37, 'z': 40, 'v': 153}
+
+
+    label.configure(text="Most common: " + str(max))
+    label2.configure(text= "Least Common: "+ str(min))
+    st.insert('end', ';')
 
 
 def contains():
@@ -25,7 +41,6 @@ def contains():
 
    words = matches
    print(words)
-   # return words
 
 
 def contains_at_index():
@@ -40,7 +55,6 @@ def contains_at_index():
 
    words = matches
    print(words)
-   # return matches
 
 
 def not_contains():
@@ -54,7 +68,6 @@ def not_contains():
          pass
    print(x)
    words = x
-   # return x
 
 
 def not_contains_at_index():
@@ -89,28 +102,31 @@ def reset_words():
 
 win= Tk()
 win.geometry("750x500")
+win.title("Wordle Solver")
 
 
-def wordle_sort(mode: str):
-   string= entry.get()
-   label.configure(text=string)
-
-#Initialize a Label to display the User Input
-label=Label(win, text="", font=("Courier 22 bold"))
+label=Label(win, text="", font=("Times New Roman", 12))
 label.pack()
+label2=Label(win, text="", font=("Times New Roman", 12))
+label2.pack()
 
-#Create an Entry widget to accept User Input
+
 global entry
 entry= Entry(win, width= 40)
 entry.focus_set()
 entry.pack()
 
-#Create a Button to validate Entry Widget
 ttk.Button(win, text="Contains", width=40, command=contains).pack(pady=5)
 ttk.Button(win, text="Contains at Index", width=40, command=contains_at_index).pack(pady=5)
 ttk.Button(win, text="Doesn't Contain", width=40, command=not_contains).pack(pady=5)
 ttk.Button(win, text="Doesn't Contains at index", width=40, command=not_contains_at_index).pack(pady=5)
 ttk.Button(win, text="Remove Word", width=40, command=remove_word).pack(pady=5)
 ttk.Button(win, text="Reset", width=40, command=reset_words).pack(pady=5)
+ttk.Button(win, text="Suggest Word", width=40, command=suggestions).pack(pady=5)
+
+global st
+st = ScrolledText(win, width=50,  height=10)
+st.pack(fill=tkinter.BOTH, side=tkinter.LEFT, expand=True)
+st.configure(state="disabled")
 
 win.mainloop()
